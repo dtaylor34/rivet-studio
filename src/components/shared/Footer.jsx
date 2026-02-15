@@ -12,6 +12,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-faint text-sm">
             © {new Date().getFullYear()} Rivet Studio. All rights reserved.
+            <span className="ml-2 text-muted" aria-hidden="true">· Portfolio v5</span>
           </p>
           <nav className="flex flex-wrap items-center justify-center gap-6" aria-label="Footer navigation">
             {navItems.map((item) => (
