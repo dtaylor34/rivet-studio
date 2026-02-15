@@ -10,7 +10,7 @@ import ProjectDetailPage from './pages/ProjectDetailPage';
 
 function App() {
   return (
-    <Router basename="/rivet-studio">
+    <Router>
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
