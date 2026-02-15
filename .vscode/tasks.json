@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "RESTART SERVER",
+      "type": "shell",
+      "command": "pkill -f 'react-scripts start' || true && rm -rf node_modules/.cache && npm start",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "custom",
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Compiling.*$",
+          "endsPattern": "^.*Compiled successfully.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": false,
+        "clear": true
+      }
+    }
+  ]
+}
+

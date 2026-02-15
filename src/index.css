@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Focus ring utility */
+@layer utilities {
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+    --tw-ring-color: rgb(var(--color-accent));
+    --tw-ring-offset-color: rgb(var(--color-bg-base));
+  }
+}
+
+/*
+  Default theme CSS variables (dark) — prevents flash of unstyled content.
+  ThemeProvider overrides these at runtime.
+  Values in RGB for Tailwind opacity modifier support.
+*/
+:root {
+  --color-bg-base: 23 23 23;
+  --color-bg-surface: 38 38 38;
+  --color-bg-deep: 10 10 10;
+  --color-bg-overlay: 255 255 255;
+  --color-text-heading: 255 255 255;
+  --color-text-body: 212 212 212;
+  --color-text-muted: 163 163 163;
+  --color-text-faint: 115 115 115;
+  --color-text-ghost: 82 82 82;
+  --color-border-main: 38 38 38;
+  --color-border-subtle: 64 64 64;
+  --color-border-tag: 163 163 163;
+  --color-accent: 37 99 235;
+  --color-accent-hover: 29 78 216;
+  --color-input-bg: 38 38 38;
+  --color-input-border: 64 64 64;
+  --color-card-bg: 229 229 229;
+  --color-cta-bg: 255 255 255;
+  --color-cta-text: 23 23 23;
+  --color-cta-hover: 245 245 245;
+}
+
+/* Smooth theme transitions */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+}
+
+/* Exclude elements that need instant transitions */
+[data-no-theme-transition],
+[data-no-theme-transition] *,
+canvas,
+svg * {
+  transition-property: none !important;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Skip to content link */
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+}
+.skip-to-content:focus {
+  left: 1rem;
+  top: 1rem;
+  outline: 2px solid rgb(var(--color-accent));
+  border-radius: 0.5rem;
+  background: rgb(var(--color-bg-base));
+  color: rgb(var(--color-text-heading));
+}
+
+/* AI Pulse Animation */
+.ai-pulse-container {
+  position: relative;
+  overflow: visible;
+  border-radius: 24px 24px 0 0;
+  background: linear-gradient(90deg,
+    rgba(23, 23, 23, 0.3) 0%,
+    rgba(38, 38, 38, 0.5) 50%,
+    rgba(23, 23, 23, 0.3) 100%
+  );
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12px, black 100%),
+                       linear-gradient(to right, transparent 0%, black 12px, black calc(100% - 12px), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 12px, black 100%),
+              linear-gradient(to right, transparent 0%, black 12px, black calc(100% - 12px), transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+.ai-pulse {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(96, 165, 250, 0.15) 20%,
+    rgba(139, 92, 246, 0.25) 40%,
+    rgba(236, 72, 153, 0.2) 60%,
+    rgba(96, 165, 250, 0.15) 80%,
+    transparent 100%
+  );
+  animation: aiPulseMove 4s ease-in-out infinite;
+}
+
+@keyframes aiPulseMove {
+  0% { left: -100%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}

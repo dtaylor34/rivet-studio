@@ -1,0 +1,101 @@
+# Rivet Studio — Project Conventions
+
+## Stack
+- React 19 (CRA) with react-router-dom for all routing
+- Tailwind CSS 3.4 for styling (no CSS modules, no styled-components)
+- Firebase Firestore for data persistence (RivetMapper only)
+- Formspree for contact form submissions
+
+## File Organization
+- Pages go in src/pages/
+- Reusable section layouts go in src/components/sections/
+- Small UI components go in src/components/ui/
+- Shared layout components (Header, Footer, ThemeToggle) go in src/components/shared/
+- Interactive prototypes go in src/components/prototypes/
+- Theme definitions go in src/theme/
+- Project metadata lives in src/data/projects.js
+- Navigation config lives in src/config/navigation.js
+- One component per file. File name matches component name (PascalCase).
+
+## Styling Rules
+- Use Tailwind utility classes only. No inline styles except dynamic values (background-image, etc.).
+- ALWAYS use semantic color tokens (bg-base, text-heading, border-main, etc.) — NEVER hardcode colors like neutral-900, text-white, etc.
+- See tailwind.config.js for the full token list mapped to CSS custom properties.
+- Exception: status colors (green/red for success/error) and decorative accent colors (blue-400, purple-400, pink-400 on process icons) can be hardcoded.
+- Headings use font-light and tracking-tight.
+- Max content width: max-w-7xl mx-auto px-6 lg:px-12
+- Section padding: py-20 md:py-32
+
+## Theming
+- Themes defined in src/theme/themes.js (CSS custom property values).
+- ThemeContext in src/theme/ThemeContext.jsx provides useTheme() hook.
+- Adding a new theme: add entry to themes.js — it auto-appears in the switcher.
+- The ThemeProvider wraps the app in index.js.
+- Default CSS variable values are in index.css to prevent flash of unstyled content.
+- For inline styles that need theme colors, use: rgb(var(--color-bg-base))
+
+## Design Language — Google Material Design 3
+- Follow Material Design 3 principles throughout. Reference https://m3.material.io for guidance.
+- Elevation: Express depth through surface tones (bg-base → bg-surface → bg-deep), not drop shadows. Use subtle border or overlay opacity to separate layers.
+- Spacing: Use a 4px base grid. Tailwind spacing scale (p-1 = 4px, p-2 = 8px, etc.) aligns naturally. Prefer consistent increments.
+- Shape: Use rounded corners consistently — rounded-lg for smaller elements (inputs, tags), rounded-2xl for cards and sections.
+- Typography: Emphasis through font weight (font-light for display, font-normal for emphasis, font-semibold for labels) rather than color variation. Keep the type hierarchy clear: display → headline → title → body → label.
+- Motion: Transitions should feel natural and purposeful — 200-300ms duration, ease-in-out timing. Use transition-colors and transition-opacity for interactive states. Avoid decorative animation.
+- Interaction: Clear hover/focus/active states on all interactive elements. Buttons and links should visibly respond to interaction.
+- Color: Use the semantic token system. Accent color is used sparingly for primary actions only — not decoration.
+
+## Accessibility (A11y)
+- Every interactive element (buttons, links, toggles, form inputs) MUST have a descriptive accessible label — either visible text content, an aria-label, or aria-labelledby.
+- Images: All <img> tags require meaningful alt text. Decorative images use alt="".
+- Semantic HTML: Use <nav>, <main>, <section>, <header>, <footer>, <article> appropriately. Don't use <div> for clickable elements — use <button> or <a>.
+- Focus management: All interactive elements must be keyboard-accessible and have visible focus indicators. Use the focus-ring utility or focus:ring-2 focus:ring-accent.
+- ARIA roles: Use role attributes when semantic HTML alone is insufficient (e.g., role="tablist", role="tab", role="tabpanel" for tab sections).
+- Color contrast: Text must meet WCAG 2.1 AA minimum contrast (4.5:1 for body text, 3:1 for large text). Verify when creating new themes.
+- Skip navigation: A "Skip to main content" link is the first focusable element (in MainLayout).
+- Form labels: Every form input must have an associated <label> or aria-label. Placeholder text alone is not sufficient.
+- Screen reader context: Use aria-live regions for dynamic content (e.g., form submission status). Use aria-expanded on accordion toggles.
+- Reduced motion: The prefers-reduced-motion media query is respected in index.css — disables transitions and animations.
+
+## Component Patterns
+- Use functional components with hooks.
+- Reusable section components accept props for content (title, description, items, images).
+- Project detail pages import and compose section components.
+- Use react-router-dom <Link> for all internal navigation — never window.location.href.
+- New projects: add entry to data/projects.js, create page in pages/projects/, register in pages/projects/index.js.
+
+## Routing
+- All routing uses react-router-dom (BrowserRouter). No custom hash routing.
+- Layout wrapper is in src/layouts/MainLayout.jsx (Header + Footer + Outlet).
+- Project detail pages use /project/:slug pattern.
+- All pages: /, /contact, /ai-examples, /client-examples, /about-us, /project/:slug
+
+## Adding a New Project
+1. Add entry to src/data/projects.js
+2. Create src/pages/projects/YourProject.jsx (compose with ProjectHero, TwoColumnSection, ProcessSection, ImageShowcase)
+3. Import and register in src/pages/projects/index.js
+
+## Adding a New Page
+1. Create src/pages/YourPage.jsx
+2. Add route in src/App.js (inside <Route element={<MainLayout />}>)
+3. If it should appear in nav, add to src/config/navigation.js
+
+## Do NOT
+- Create a custom router. Use react-router-dom exclusively.
+- Use window.location.href for internal navigation. Use <Link> or useNavigate().
+- Put multiple page-level components in one file.
+- Hardcode project metadata in component files — use data/projects.js.
+- Hardcode colors — use semantic tokens.
+- Use CSS-in-JS or separate CSS files (Tailwind only, exceptions in index.css).
+- Install new UI libraries without discussion.
+- Put credentials, API keys, or passwords in source code files — use .env.
+
+## Analytics
+- All tracking functions live in src/utils/analytics.js.
+- Page views are tracked automatically via usePageTracking hook in MainLayout.
+- When adding new interactive elements (buttons, links, toggles), add tracking by importing the relevant function from analytics.js.
+- Event naming convention: category_action (e.g., nav_click, project_view, cta_click).
+
+## Deployment
+- FTP credentials are stored in .env (never committed).
+- .env.example is the template showing required keys.
+- Deploy: npm run build → python upload_ftp.py
