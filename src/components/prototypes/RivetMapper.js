@@ -603,7 +603,7 @@ const RivetMapper = () => {
     }, cycleDuration);
 
     return () => clearInterval(interval);
-  }, [isAnimatedMode]);
+  }, [isAnimatedMode, animationSequence.length]);
 
   React.useEffect(() => {
     if (isAnimatedMode) {
@@ -784,6 +784,7 @@ const RivetMapper = () => {
       });
       ctx.globalAlpha = 1.0;
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- allPresets/animationSequence are derived and would require useMemo to include safely
   }, [selectedPreset, currentGroup, lineGroups, selectedGroupIndex, isCustomMode, referenceImage, imagePositioning, imagePosition, imageSize, isAnimatedMode, animationIndex, fadeOpacity, cropMode, cropBounds, isDark]);
 
   const handleReferenceUpload = (e) => {

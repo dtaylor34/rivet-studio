@@ -65,7 +65,7 @@ export function TooltipContent({ side = 'top', className = '', children }) {
     const top = side === 'top' ? trigger.top - content.height - 8 : trigger.bottom + 8;
 
     setPosition({ left, top });
-  }, [open, side]);
+  }, [open, side, triggerRef]);
 
   if (!open) return null;
 

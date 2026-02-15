@@ -36,6 +36,19 @@ def get_required_env(key):
     return value
 
 
+def ensure_remote_path(ftp, remote_path):
+    """Create remote path and any parent directories if they don't exist."""
+    parts = remote_path.strip("/").split("/")
+    for part in parts:
+        if not part:
+            continue
+        try:
+            ftp.cwd(part)
+        except Exception:
+            ftp.mkd(part)
+            ftp.cwd(part)
+
+
 def upload_directory(ftp, local_dir, remote_dir):
     """Recursively upload a local directory to the FTP server."""
     for item in sorted(os.listdir(local_dir)):
@@ -85,6 +98,7 @@ def main():
         print(f"✓ Connected! Current directory: {ftp.pwd()}")
         print(f"\nDeploying to {remote_path}...\n")
 
+        ensure_remote_path(ftp, remote_path)
         upload_directory(ftp, str(build_dir), remote_path)
 
         ftp.quit()

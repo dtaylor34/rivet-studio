@@ -299,7 +299,6 @@ const PhoneLoader = () => {
           const blue = [100, 181, 246]; // Google Blue 300
           const bgDark = [38, 38, 38];
           const borderGray = [163, 163, 163];
-          const bgLight = [255, 255, 255];
           const bgLightMuted = [245, 245, 245];
           const textLight = [212, 212, 212];
           const textDark = [64, 64, 64];
