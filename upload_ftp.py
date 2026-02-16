@@ -24,7 +24,7 @@ def load_env(filepath=".env"):
             if not line or line.startswith("#"):
                 continue
             key, _, value = line.partition("=")
-            os.environ.setdefault(key.strip(), value.strip())
+            os.environ[key.strip()] = value.strip()
 
 
 def get_required_env(key):
