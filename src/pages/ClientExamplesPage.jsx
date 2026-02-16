@@ -36,8 +36,8 @@ const ClientExamplesPage = () => {
           <p className="text-muted text-lg mb-8 max-w-2xl mx-auto">
             Let's discuss how we can help transform your product vision into reality with user-centered design and strategic innovation.
           </p>
-          <Link to="/contact" onClick={() => trackCTAClick('Get in Touch', 'client_examples')} className="px-8 py-3 border border-tag text-body rounded-full text-sm font-light tracking-wide hover:border-heading hover:text-heading transition-colors duration-300 inline-block">
-            Get in Touch
+          <Link to="/contact" onClick={() => trackCTAClick('Contact Us', 'client_examples')} className="px-8 py-3 border border-tag text-body rounded-full text-sm font-light tracking-wide hover:border-heading hover:text-heading transition-colors duration-300 inline-block">
+            Contact Us
           </Link>
         </div>
       </div>

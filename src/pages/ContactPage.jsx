@@ -60,7 +60,7 @@ const ContactPage = () => {
         {/* Right — Form */}
         <div className="bg-base flex items-center justify-center p-8 lg:p-16">
           <div className="w-full max-w-xl">
-            <h1 className="text-4xl md:text-5xl font-light text-heading mb-4 tracking-tight">Get In Touch</h1>
+            <h1 className="text-4xl md:text-5xl font-light text-heading mb-4 tracking-tight">Contact Us</h1>
             <p className="text-muted mb-12 font-light">
               Please fill out all fields, and I'll get back to you as soon as possible.
             </p>

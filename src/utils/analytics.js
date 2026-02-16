@@ -79,7 +79,7 @@ export const trackExampleTab = (exampleTitle, tab) => {
 /** Any call-to-action button clicked */
 export const trackCTAClick = (label, location) => {
   gtag('event', 'cta_click', {
-    cta_label: label,           // 'Get in Touch', 'Contact Us', 'View More', etc.
+    cta_label: label,           // 'Contact Us', 'View More', etc.
     cta_location: location,     // 'hero', 'header', 'footer', 'video_section', 'about_page'
   });
 };
