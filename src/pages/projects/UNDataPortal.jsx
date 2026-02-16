@@ -22,7 +22,7 @@ function ListeningCircles() {
   const [hoveredId, setHoveredId] = useState(null);
 
   return (
-    <div className="rounded-lg overflow-visible bg-deep border border-main p-8 lg:p-12 font-sans min-h-[500px] flex flex-col">
+    <div className="rounded-lg overflow-visible bg-surface border border-main p-8 lg:p-12 font-sans min-h-[500px] flex flex-col">
       <h2 className="text-[26px] md:text-[32px] font-normal text-heading tracking-normal mb-12 text-center" style={{ letterSpacing: 0 }}>
         User Outreach
       </h2>
@@ -45,13 +45,13 @@ function ListeningCircles() {
                 onMouseLeave={() => setHoveredId(null)}
               >
                 <div
-                  className={`w-32 h-32 md:w-40 md:h-40 rounded-full border flex flex-col items-center justify-center cursor-pointer z-10 transition-all duration-200 ease-out ${
-                    isHovered ? 'scale-110 border-heading bg-surface' : 'scale-100 border-muted bg-deep'
+                  className={`w-32 h-32 md:w-40 md:h-40 rounded-full border flex flex-col items-center justify-center cursor-pointer z-10 transition-all duration-200 ease-out text-heading ${
+                    isHovered ? 'scale-110 border-heading bg-base' : 'scale-100 border-muted bg-base'
                   }`}
                   aria-label={step.title}
                 >
-                  <Icon className="w-8 h-8 mb-2 text-heading" strokeWidth={1.5} aria-hidden />
-                  <span className="text-sm md:text-base font-medium text-heading">{step.title}</span>
+                  <Icon className="w-8 h-8 mb-2 shrink-0" strokeWidth={1.5} aria-hidden />
+                  <span className="text-sm md:text-base font-medium">{step.title}</span>
                 </div>
                 {isHovered && (
                   <div
@@ -180,8 +180,8 @@ const UNDataPortal = () => {
       </div>
     </ProcessSection>
     <ProcessSection
-      title="UN Data - Listening to the user."
-      description="By interviewing multiple users we were able to apply many—if not all—of the suggested needs to create a product that works well for the beginner through to the advanced user."
+      title="UN Data - Listening to the user"
+      description="By interviewing multiple users we created a product that works well for the beginner to advanced user."
     >
       <ListeningCircles />
     </ProcessSection>
