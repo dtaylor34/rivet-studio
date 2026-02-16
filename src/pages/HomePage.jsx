@@ -100,9 +100,9 @@ const HomePage = () => {
               Product Design Studio
             </h1>
             <p className="text-xl md:text-2xl text-muted font-light" style={{ maxWidth: '580px', lineHeight: '1.6' }}>
-              Rivet Studio crafts high-quality digital experiences that are both visually compelling and highly functional.
+              Rivet Studio identifies the best design approach that delivers optimal results rapidly and effectively.
               <br />We partner with teams to bring product visions to life.
-              <br />Take a look at our AI examples and Client Work.
+              <br />Take a look at our AI examples and Design Showcase.
             </p>
           </div>
         </div>
@@ -213,13 +213,13 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* 4. Client Work Carousel */}
+      {/* 4. Design Showcase Carousel */}
       <div className="w-full py-20 md:py-32 border-t border-main bg-deep">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="mb-12">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-heading mb-6 tracking-tight">
               <Link to="/client-examples" className="text-heading no-underline hover:opacity-80 transition-opacity">
-                Client Work
+                Design Showcase
               </Link>
             </h2>
           </div>

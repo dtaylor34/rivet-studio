@@ -11,7 +11,7 @@ export const navigationItems = [
   },
   {
     id: 'client-examples',
-    label: 'Client Work',
+    label: 'Design Showcase',
     path: '/client-examples',
     order: 2
   },

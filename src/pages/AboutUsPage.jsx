@@ -45,6 +45,8 @@ const AboutUsPage = () => {
             <h2 className="text-2xl font-light text-heading mb-4">Our Approach</h2>
             <p className="text-muted leading-relaxed mb-4">We leverage artificial intelligence and machine learning throughout our process:</p>
             <ul className="space-y-3 text-muted">
+              <li className="flex items-start"><span className="text-heading mr-3">•</span><span>Code implementation powered by AI</span></li>
+              <li className="flex items-start"><span className="text-heading mr-3">•</span><span>Creative vision guided by human expertise</span></li>
               <li className="flex items-start"><span className="text-heading mr-3">•</span><span>AI-powered user research and behavior analysis</span></li>
               <li className="flex items-start"><span className="text-heading mr-3">•</span><span>Data-driven design decisions and optimization</span></li>
               <li className="flex items-start"><span className="text-heading mr-3">•</span><span>Predictive UX modeling and testing</span></li>
@@ -61,7 +63,7 @@ const AboutUsPage = () => {
           {[
             { title: 'UX Strategy', desc: 'Strategic planning and user research to define product direction and ensure alignment with business goals and user needs.' },
             { title: 'Product Design', desc: 'End-to-end product design from concept to implementation, with a focus on creating intuitive, accessible, and delightful experiences.' },
-            { title: 'AI Integration', desc: 'Thoughtful integration of AI and machine learning to enhance user experiences while maintaining human-centered design principles.' },
+            { title: 'AI Integration', desc: 'Thoughtful integration of AI and machine learning to enhance user experiences, while maintaining human-centered design principles.' },
             { title: 'Prototyping', desc: 'Rapid prototyping and interactive demos to validate concepts and gather feedback before full-scale development.' },
             { title: 'Developer Tools', desc: 'Designing tools and platforms that empower developers to work efficiently and effectively.' },
             { title: 'Workshop Facilitation', desc: 'Leading collaborative workshops to align teams, generate ideas, and drive consensus on product direction.' },

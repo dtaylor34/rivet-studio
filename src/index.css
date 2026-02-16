@@ -39,6 +39,16 @@
   --color-cta-hover: 245 245 245;
 }
 
+/* Page background: dark in dark mode (no white flash when scrolling), white in light mode */
+html,
+body {
+  background: rgb(var(--color-bg-deep));
+}
+[data-theme="light"] html,
+[data-theme="light"] body {
+  background: #fff;
+}
+
 /* Smooth theme transitions */
 *,
 *::before,

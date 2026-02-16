@@ -12,11 +12,11 @@ const ClientExamplesPage = () => {
       <nav className="flex items-center gap-2 text-sm mb-8" aria-label="Breadcrumb">
         <Link to="/" className="text-faint hover:text-body transition-colors">Home</Link>
         <span className="text-ghost">/</span>
-        <span className="text-muted">Client Work</span>
+        <span className="text-muted">Design Showcase</span>
       </nav>
 
       <div className="mb-20">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-heading mb-6 tracking-tight">Client Work</h1>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-heading mb-6 tracking-tight">Design Showcase</h1>
         <p className="text-xl text-muted max-w-3xl leading-relaxed">
           Explore our portfolio of enterprise-level projects designed for leading organizations.
           Each case study demonstrates our approach to solving complex user experience challenges

@@ -62,7 +62,7 @@ const ContactPage = () => {
           <div className="w-full max-w-xl">
             <h1 className="text-4xl md:text-5xl font-light text-heading mb-4 tracking-tight">Contact Us</h1>
             <p className="text-muted mb-12 font-light">
-              Please fill out all fields, and I'll get back to you as soon as possible.
+              Please fill out all fields, and we will get back to you as soon as possible.
             </p>
 
             <div className="space-y-6">
@@ -80,7 +80,7 @@ const ContactPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <input type="email" aria-label="Email address" value={contactForm.email} onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })} placeholder="Email address*" className={inputClasses} required />
                   <select aria-label="Project budget" value={contactForm.budget} onChange={(e) => setContactForm({ ...contactForm, budget: e.target.value })} className={inputClasses} required>
-                    <option value="">Choose your budget*</option>
+                    <option value="">Budget*</option>
                     <option value="less-than-10k">Less than $10k</option>
                     <option value="10k-25k">$10k - $25k</option>
                     <option value="25k-50k">$25k - $50k</option>
