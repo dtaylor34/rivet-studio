@@ -67,7 +67,7 @@ export function AnalysisCircles() {
                   className="w-8 h-8 mb-2 text-heading transition-colors duration-300"
                   aria-hidden
                 />
-                <span className="text-sm md:text-base font-medium text-heading transition-colors duration-300">
+                <span className="text-sm md:text-[1rem] font-medium text-heading transition-colors duration-300">
                   {step.title}
                 </span>
               </div>

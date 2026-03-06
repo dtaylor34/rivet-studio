@@ -293,7 +293,7 @@ const HomePage = () => {
               <Link
                 to="/contact"
                 onClick={() => trackCTAClick('Contact Us', 'video_section')}
-                className="inline-block border-2 border-heading text-heading px-10 py-4 rounded-full hover:bg-heading hover:text-base transition-all duration-300 text-base font-normal tracking-wide hover:scale-105"
+                className="inline-block border-2 border-heading text-heading px-10 py-4 rounded-full hover:bg-heading hover:text-base transition-all duration-300 text-[1rem] font-normal tracking-wide hover:scale-105"
               >
                 Contact Us
               </Link>

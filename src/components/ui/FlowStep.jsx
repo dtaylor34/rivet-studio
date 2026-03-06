@@ -9,7 +9,7 @@ import {
 /* Flow chart styles matching Google XP Product Flow: dark charcoal default, light grey highlight, blue ring when active */
 const variantStyles = {
   default: 'rounded-md bg-surface text-body border border-main hover:bg-overlay/10 hover:text-heading hover:border-subtle',
-  highlight: 'rounded-md bg-heading text-base font-semibold border border-heading shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:bg-heading/80 hover:border-heading/80',
+  highlight: 'rounded-md bg-heading text-[1rem] font-semibold border border-heading shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:bg-heading/80 hover:border-heading/80',
   secondary: 'rounded-full bg-surface text-body border border-main hover:bg-overlay/10 hover:text-heading hover:border-subtle',
   ghost: 'rounded-md bg-transparent text-faint border border-dashed border-main hover:border-subtle hover:text-body',
 };

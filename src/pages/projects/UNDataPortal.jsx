@@ -22,7 +22,7 @@ function ListeningCircles() {
   const [hoveredId, setHoveredId] = useState(null);
 
   return (
-    <div className="rounded-lg overflow-visible bg-surface border border-main p-8 lg:p-12 font-sans min-h-[500px] flex flex-col">
+    <div className="rounded-lg overflow-visible bg-surface border border-main p-8 lg:p-12 font-sans flex flex-col relative z-0">
       <h2 className="text-[26px] md:text-[32px] font-normal text-heading tracking-normal mb-12 text-center" style={{ letterSpacing: 0 }}>
         User Outreach
       </h2>
@@ -45,17 +45,17 @@ function ListeningCircles() {
                 onMouseLeave={() => setHoveredId(null)}
               >
                 <div
-                  className={`w-32 h-32 md:w-40 md:h-40 rounded-full border flex flex-col items-center justify-center cursor-pointer z-10 transition-all duration-200 ease-out text-heading ${
+                  className={`w-32 h-32 md:w-40 md:h-40 rounded-full border flex flex-col items-center justify-center cursor-pointer transition-all duration-200 ease-out ${
                     isHovered ? 'scale-110 border-heading bg-base' : 'scale-100 border-muted bg-base'
                   }`}
                   aria-label={step.title}
                 >
-                  <Icon className="w-8 h-8 mb-2 shrink-0" strokeWidth={1.5} aria-hidden />
-                  <span className="text-sm md:text-base font-medium">{step.title}</span>
+                  <Icon className="w-8 h-8 mb-2 text-heading" strokeWidth={1.5} aria-hidden />
+                  <span className="text-sm md:text-[1rem] font-medium text-heading">{step.title}</span>
                 </div>
                 {isHovered && (
                   <div
-                    className="absolute top-full mt-6 w-64 bg-surface rounded-xl p-5 shadow-2xl border border-subtle z-20 left-1/2 -translate-x-1/2"
+                    className="absolute top-full mt-6 w-64 bg-surface rounded-xl p-5 shadow-2xl border border-subtle z-10 left-1/2 -translate-x-1/2"
                     role="tooltip"
                   >
                     <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-surface border-t border-l border-subtle transform rotate-45" aria-hidden />
@@ -183,7 +183,9 @@ const UNDataPortal = () => {
       title="UN Data - Listening to the user"
       description="By interviewing multiple users we created a product that works well for the beginner to advanced user."
     >
-      <ListeningCircles />
+      <div className="isolate">
+        <ListeningCircles />
+      </div>
     </ProcessSection>
     <div className="mb-16">
       <div className="bg-surface rounded-2xl p-8 lg:p-12">

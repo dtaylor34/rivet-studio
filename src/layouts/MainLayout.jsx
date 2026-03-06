@@ -145,7 +145,7 @@ const Header = () => {
                 key={item.id}
                 to={item.path}
                 onClick={() => trackNavClick(item.label, 'mobile_menu')}
-                className={`block px-4 py-3 rounded-lg text-base font-light transition-colors duration-200 ${
+                className={`block px-4 py-3 rounded-lg text-[1rem] font-light transition-colors duration-200 ${
                   currentPath === item.path
                     ? 'text-heading bg-surface'
                     : 'text-muted hover:text-heading hover:bg-surface/50'
@@ -157,7 +157,7 @@ const Header = () => {
             <Link
               to="/contact"
               onClick={() => trackCTAClick('Contact Us', 'mobile_menu')}
-              className="block px-4 py-3 rounded-lg text-base font-light text-muted hover:text-heading hover:bg-surface/50 transition-colors duration-200"
+              className="block px-4 py-3 rounded-lg text-[1rem] font-light text-muted hover:text-heading hover:bg-surface/50 transition-colors duration-200"
             >
               Contact Us
             </Link>
