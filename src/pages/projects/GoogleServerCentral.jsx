@@ -35,7 +35,7 @@ const GoogleServerCentral = () => (
       description="Visualized high-value events to align them with the goals of the product's critical user journeys (CUJs). Prioritized and consistently reinforced user needs throughout the entire user experience."
     >
       <div className="rounded-lg overflow-hidden bg-overlay/10">
-        <img
+        <img loading="lazy" decoding="async"
           src={serverCentralDashboard}
           alt="Boq Studio Product Flow Diagram"
           className="w-full h-auto object-contain"
@@ -47,7 +47,7 @@ const GoogleServerCentral = () => (
       description="Restructured the visual hierarchy to improve organization and clarity. Created a simple, flexible, and intuitive single-panel experience. The project had a significant impact, supporting over 30K+ engineers."
     >
       <div className="rounded-lg overflow-hidden bg-overlay/10">
-        <img
+        <img loading="lazy" decoding="async"
           src={serverCentralDiagram}
           alt="Product Tool Integration Interface"
           className="w-full h-auto object-contain"
@@ -59,7 +59,7 @@ const GoogleServerCentral = () => (
       description="Directed the complete end-to-end UX development process for a platform showcasing new features and training sessions of Boq Studio product."
     >
       <div className="rounded-lg overflow-hidden bg-overlay/10">
-        <img
+        <img loading="lazy" decoding="async"
           src={serverCentralMicrosite}
           alt="Boq Studio Microsite"
           className="w-full h-auto object-contain"
@@ -71,7 +71,7 @@ const GoogleServerCentral = () => (
       description="Directed comprehensive end-to-end UX design for first-time users. Developed a captivating onboarding experience that effectively highlights key features."
     >
       <div className="rounded-lg overflow-hidden bg-overlay/10">
-        <img
+        <img loading="lazy" decoding="async"
           src={serverCentralOnboarding}
           alt="Onboarding Experience"
           className="w-full h-auto object-contain"

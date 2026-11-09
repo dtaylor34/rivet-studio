@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { projects, prototypingExamples } from '../data/projects';
 import { ChevronLeft, ChevronRight } from '../components/ui/ChevronIcon';
@@ -6,7 +6,8 @@ import FlightNetworkChart from '../components/prototypes/FlightNetworkChart';
 import RivetMapper from '../components/prototypes/RivetMapper';
 import PhoneLoader from '../components/prototypes/PhoneLoader';
 import backgroundImage from '../assets/Rivet-background-image-converted.jpg';
-import cableVideo from '../assets/cable-looping-movie.mov';
+import cableVideo from '../assets/cable-looping-movie.webm';
+import cablePoster from '../assets/cable-poster.jpg';
 import { trackExampleNav, trackProjectClick, trackCTAClick } from '../utils/analytics';
 
 const HomePage = () => {
@@ -14,6 +15,23 @@ const HomePage = () => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
+
+  // Only play the CTA background video while its section is on-screen —
+  // keeps scrolling snappy (poster paints instantly, no decode while off-screen).
+  const videoRef = useRef(null);
+  useEffect(() => {
+    const vid = videoRef.current;
+    if (!vid) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) vid.play().catch(() => {});
+        else vid.pause();
+      },
+      { threshold: 0.15 }
+    );
+    io.observe(vid);
+    return () => io.disconnect();
+  }, []);
 
   const minSwipeDistance = 50;
 
@@ -51,14 +69,24 @@ const HomePage = () => {
     if (d < -minSwipeDistance) prevExample();
   };
 
-  // Touch handlers — projects
-  const onTouchStartProjects = (e) => { setTouchEnd(null); setTouchStart(e.targetTouches[0].clientX); };
-  const onTouchMoveProjects = (e) => { setTouchEnd(e.targetTouches[0].clientX); };
-  const onTouchEndProjects = () => {
-    if (!touchStart || !touchEnd) return;
-    const d = touchStart - touchEnd;
-    if (d > minSwipeDistance) nextProject();
-    if (d < -minSwipeDistance) prevProject();
+  // Touch handlers — projects (horizontal swipe to change slide; ignores vertical scroll)
+  const projectTouchX = useRef(null);
+  const projectTouchY = useRef(null);
+  const projectSwiped = useRef(false);
+  const onTouchStartProjects = (e) => {
+    projectSwiped.current = false;
+    projectTouchX.current = e.targetTouches[0].clientX;
+    projectTouchY.current = e.targetTouches[0].clientY;
+  };
+  const onTouchEndProjects = (e) => {
+    if (projectTouchX.current == null) return;
+    const dx = projectTouchX.current - e.changedTouches[0].clientX;
+    const dy = projectTouchY.current - e.changedTouches[0].clientY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > minSwipeDistance) {
+      projectSwiped.current = true;
+      if (dx > 0) nextProject(); else prevProject();
+    }
+    projectTouchX.current = null;
   };
 
   const renderExampleComponent = (example) => {
@@ -84,7 +112,7 @@ const HomePage = () => {
   return (
     <>
       {/* 1. Overview / Hero Section */}
-      <div className="flex justify-center pb-20 md:pb-32">
+      <div className="flex justify-center pb-8 md:pb-12">
         <div
           className="relative overflow-hidden p-12 w-full lg:max-w-[1278px]"
           style={{
@@ -96,19 +124,18 @@ const HomePage = () => {
           }}
         >
           <div className="relative z-10" style={{ paddingTop: '48px' }}>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-heading mb-6 tracking-tight">
-              Product Design Studio
+            <h1 className="text-[32px] md:text-[44px] lg:text-[56px] leading-tight font-light text-heading mb-6 tracking-tight lg:max-w-[70%]">
+              Rivet Studio delivers user experiences rapidly and effectively connecting the best approach for optimal results.
             </h1>
             <p className="text-xl md:text-2xl text-muted font-light" style={{ maxWidth: '580px', lineHeight: '1.6' }}>
-              Rivet Studio identifies the best design approach that delivers optimal results rapidly and effectively.
-              <br />We partner with teams to bring product visions to life.
-              <br />Take a look at our AI examples and Design Showcase.
+              We prototype fast, test early, and iterate continuously to ensure every decision is validated by real user feedback.
             </p>
           </div>
         </div>
       </div>
 
-      {/* 2. AI Examples Carousel */}
+      {/* 2. AI Examples Carousel — hidden (section disabled per request) */}
+      {false && (
       <div className="w-full py-20 md:py-32 border-t border-main bg-deep">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="mb-12">
@@ -160,19 +187,14 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+      )}
 
       {/* 3. Process Section */}
-      <div className="w-full py-20 md:py-32 border-t border-main">
+      <div className="w-full py-16 md:py-24 border-t border-main">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="max-w-5xl mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-heading mb-6 tracking-tight" style={{ maxWidth: '930px' }}>
-              Rivet Studio delivers user experiences rapidly and effectively to identify the best approach for optimal results.
-            </h2>
-            <p className="text-xl md:text-2xl text-muted font-light" style={{ maxWidth: '870px' }}>
-              We prototype fast, test early, and iterate continuously to ensure every decision is validated by real user feedback.
-            </p>
-          </div>
-
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-heading text-center mb-10 md:mb-12 tracking-tight">
+            Our Design Process
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="border border-main rounded-xl p-8 bg-base hover:border-subtle transition-colors">
               <div className="w-12 h-12 rounded-full bg-blue-500 bg-opacity-10 flex items-center justify-center mb-6">
@@ -214,10 +236,10 @@ const HomePage = () => {
       </div>
 
       {/* 4. Design Showcase Carousel */}
-      <div className="w-full py-20 md:py-32 border-t border-main bg-deep">
+      <div className="w-full py-16 md:py-24 border-t border-main bg-deep">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="mb-12">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-heading mb-6 tracking-tight">
+          <div className="mb-10">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-heading text-center mb-6 tracking-tight">
               <Link to="/client-examples" className="text-heading no-underline hover:opacity-80 transition-opacity">
                 Design Showcase
               </Link>
@@ -228,26 +250,25 @@ const HomePage = () => {
             <div
               className="border border-main rounded-lg overflow-hidden bg-base"
               onTouchStart={onTouchStartProjects}
-              onTouchMove={onTouchMoveProjects}
               onTouchEnd={onTouchEndProjects}
             >
-              <div className="px-6 py-5 border-b border-main">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="font-medium text-heading text-xl mb-1">
+              <div className="px-4 sm:px-6 py-4 sm:py-5 border-b border-main">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                  <div className="min-w-0">
+                    <h3 className="font-medium text-heading text-lg sm:text-xl mb-1 truncate">
                       {sortedProjects[currentProjectIndex].title}
                     </h3>
-                    <p className="text-sm text-muted">{sortedProjects[currentProjectIndex].subtitle}</p>
+                    <p className="text-sm text-muted truncate">{sortedProjects[currentProjectIndex].subtitle}</p>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
                     <button onClick={prevProject} className="p-2 hover:bg-surface rounded-full transition-colors" aria-label="Previous project">
                       <ChevronLeft className="w-6 h-6 text-muted" />
                     </button>
-                    <span className="text-faint text-sm">{currentProjectIndex + 1} / {sortedProjects.length}</span>
+                    <span className="text-faint text-sm whitespace-nowrap tabular-nums">{currentProjectIndex + 1} / {sortedProjects.length}</span>
                     <button onClick={nextProject} className="p-2 hover:bg-surface rounded-full transition-colors" aria-label="Next project">
                       <ChevronRight className="w-6 h-6 text-muted" />
                     </button>
-                    <Link to="/client-examples" onClick={() => trackCTAClick('View More', 'client_carousel')} className="ml-4 text-muted hover:text-heading transition-colors text-sm underline">
+                    <Link to="/client-examples" onClick={() => trackCTAClick('View More', 'client_carousel')} className="ml-auto sm:ml-4 text-muted hover:text-heading transition-colors text-sm underline whitespace-nowrap">
                       View More
                     </Link>
                   </div>
@@ -256,35 +277,43 @@ const HomePage = () => {
 
               <Link
                 to={`/project/${sortedProjects[currentProjectIndex].slug}`}
-                onClick={() => trackProjectClick(sortedProjects[currentProjectIndex].title, 'carousel')}
-                className="block w-full p-6 hover:opacity-90 transition-opacity"
+                onClick={(e) => {
+                  if (projectSwiped.current) { e.preventDefault(); projectSwiped.current = false; return; }
+                  trackProjectClick(sortedProjects[currentProjectIndex].title, 'carousel');
+                }}
+                className="block w-full p-4 lg:p-6 hover:opacity-90 transition-opacity"
               >
-                <div className="bg-base rounded-2xl p-8 lg:p-12">
+                <div className="bg-base rounded-2xl p-0 sm:p-6 lg:p-12">
                   <img
                     src={sortedProjects[currentProjectIndex].image}
                     alt={sortedProjects[currentProjectIndex].title}
-                    className="w-full h-auto rounded-lg shadow-2xl"
+                    width={1200}
+                    height={800}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full aspect-[3/2] object-cover rounded-lg shadow-2xl transform-gpu"
                   />
                 </div>
               </Link>
             </div>
+            <p className="text-faint text-xs text-center mt-3 sm:hidden">Swipe left or right to browse</p>
           </div>
         </div>
       </div>
 
       {/* 5. Ready to Collaborate CTA with Video */}
-      <div className="w-full py-24 md:py-40 bg-deep">
+      <div className="w-full py-16 md:py-24 bg-deep">
         <div className="flex items-center justify-center">
           <div className="relative overflow-hidden w-full lg:max-w-[1278px]" style={{ backgroundColor: 'rgb(var(--color-bg-deep))' }}>
-            <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" style={{ opacity: 0.20 }}>
-              <source src={cableVideo} type="video/mp4" />
+            <video ref={videoRef} loop muted playsInline preload="none" poster={cablePoster} className="absolute inset-0 w-full h-full object-cover transform-gpu" style={{ opacity: 0.20 }}>
+              <source src={cableVideo} type="video/webm" />
             </video>
             <div className="absolute top-0 left-0 right-0 z-10" style={{ height: '120px', background: 'linear-gradient(to bottom, rgb(var(--color-bg-deep)), transparent)' }}></div>
             <div className="absolute bottom-0 left-0 right-0 z-10" style={{ height: '240px', background: 'linear-gradient(to top, rgb(var(--color-bg-deep)), transparent)' }}></div>
             <div className="absolute inset-0" style={{ backgroundColor: 'rgb(var(--color-bg-deep) / 0.4)' }}></div>
 
-            <div className="relative z-20 text-center py-32 lg:py-40 px-12 lg:px-20">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-heading mb-6 tracking-tight">
+            <div className="relative z-20 text-center py-20 lg:py-28 px-12 lg:px-20">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-heading mb-6 tracking-tight">
                 Ready to start your project?
               </h2>
               <p className="text-xl md:text-2xl text-muted mb-8 font-light max-w-3xl mx-auto">
@@ -302,12 +331,6 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* AI Pulse Animation */}
-      <div className="w-full flex items-center justify-center">
-        <div className="ai-pulse-container" style={{ width: '1182px', maxWidth: '100%', height: '8px' }}>
-          <div className="ai-pulse"></div>
-        </div>
-      </div>
     </>
   );
 };

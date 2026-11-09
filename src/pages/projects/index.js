@@ -1,3 +1,5 @@
+import NaturaKingdom from './NaturaKingdom';
+import CoveredCallsManager from './CoveredCallsManager';
 import UNDataPortal from './UNDataPortal';
 import GoogleServerCentral from './GoogleServerCentral';
 import GoogleExperiments from './GoogleExperiments';
@@ -6,6 +8,8 @@ import GoogleHaTS from './GoogleHaTS';
 import BrandArchitecture from './BrandArchitecture';
 
 const projectComponents = {
+  "natura-kingdom": NaturaKingdom,
+  "rivettrade": CoveredCallsManager,
   "un-data-portal": UNDataPortal,
   "google-server-central": GoogleServerCentral,
   "google-experiments": GoogleExperiments,

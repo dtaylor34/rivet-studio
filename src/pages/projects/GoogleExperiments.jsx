@@ -34,7 +34,7 @@ const GoogleExperiments = () => (
       description="Developed and spearheaded the UX integration of QuiX into XP. Leveraged existing back-end features and implemented Google Material front-end design solutions."
     >
       <div className="rounded-lg overflow-hidden bg-overlay/10">
-        <img
+        <img loading="lazy" decoding="async"
           src={experimentsPortal01}
           alt="Google XP Product Flow"
           className="w-full h-auto object-contain"

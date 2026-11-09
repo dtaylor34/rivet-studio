@@ -34,7 +34,7 @@ const GoogleHaTS = () => (
       description="Directed the complete end-to-end UX development for HaTS3, including the microsite and survey cards. Developed the brand identity, illustrations, and brand awareness for HaTS3 as a stand-alone tool."
     >
       <div className="rounded-lg overflow-hidden bg-overlay/10">
-        <img
+        <img loading="lazy" decoding="async"
           src={hatsSurveysLanding}
           alt="HaTS Landing Page"
           className="w-full h-auto object-contain"
@@ -46,7 +46,7 @@ const GoogleHaTS = () => (
       description="Led the complete end-to-end UX process for survey card layout, design, and positioning across mobile, tablet, and desktop devices."
     >
       <div className="rounded-lg overflow-hidden bg-overlay/10">
-        <img
+        <img loading="lazy" decoding="async"
           src={hatsSurveysSetup}
           alt="Rating Banner Survey Examples"
           className="w-full h-auto object-contain"

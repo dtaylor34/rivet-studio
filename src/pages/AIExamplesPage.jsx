@@ -5,6 +5,8 @@ import FlightNetworkChart from '../components/prototypes/FlightNetworkChart';
 import RivetMapper from '../components/prototypes/RivetMapper';
 import PhoneLoader from '../components/prototypes/PhoneLoader';
 import { useTheme } from '../theme/ThemeContext';
+import PasswordGate from '../components/shared/PasswordGate';
+import { CLIENTS_USERNAME, CLIENTS_PASSWORD } from '../config/access';
 import { trackExampleExpand, trackExampleTab } from '../utils/analytics';
 
 const AIExamplesPage = () => {
@@ -61,11 +63,12 @@ const AIExamplesPage = () => {
   };
 
   return (
+    <PasswordGate username={CLIENTS_USERNAME} password={CLIENTS_PASSWORD} storageKey="clients-unlocked" title="Clients">
     <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
       <nav className="flex items-center gap-2 text-sm mb-8" aria-label="Breadcrumb">
         <a href="/" className="text-faint hover:text-body transition-colors">Home</a>
         <span className="text-ghost">/</span>
-        <span className="text-muted">AI Examples</span>
+        <span className="text-muted">Clients</span>
       </nav>
 
       <div className="mb-16">
@@ -129,6 +132,7 @@ const AIExamplesPage = () => {
         ))}
       </div>
     </div>
+    </PasswordGate>
   );
 };
 

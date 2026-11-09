@@ -14,7 +14,11 @@ const ProjectCard = ({ title, subtitle, tags, image, slug }) => {
         <img
           src={image}
           alt={title}
-          className="w-full h-auto rounded-lg shadow-2xl"
+          width={1200}
+          height={800}
+          loading="lazy"
+          decoding="async"
+          className="w-full aspect-[3/2] object-cover rounded-lg shadow-2xl transform-gpu"
         />
       </div>
 

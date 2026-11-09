@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Covered Calls Manager placeholder">
+  <defs>
+    <linearGradient id="cc" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b2545"/>
+      <stop offset="0.55" stop-color="#13395f"/>
+      <stop offset="1" stop-color="#2f74b5"/>
+    </linearGradient>
+    <radialGradient id="ccGlow" cx="0.75" cy="0.25" r="0.8">
+      <stop offset="0" stop-color="#7cc4ff" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#7cc4ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#cc)"/>
+  <rect width="1200" height="800" fill="url(#ccGlow)"/>
+  <polyline points="760,270 830,220 900,250 970,170 1040,205 1110,130"
+    fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#ffffff" fill-opacity="0.14">
+    <rect x="760" y="320" width="40" height="90"/>
+    <rect x="820" y="290" width="40" height="120"/>
+    <rect x="880" y="340" width="40" height="70"/>
+    <rect x="940" y="270" width="40" height="140"/>
+    <rect x="1000" y="310" width="40" height="100"/>
+    <rect x="1060" y="250" width="40" height="160"/>
+  </g>
+  <text x="80" y="600" font-family="Helvetica, Arial, sans-serif" font-size="74" font-weight="300" fill="#ffffff">Covered Calls Manager</text>
+  <text x="84" y="662" font-family="Helvetica, Arial, sans-serif" font-size="30" font-weight="400" fill="#ffffff" fill-opacity="0.8">Turn live market data into clear covered-call decisions</text>
+  <text x="84" y="100" font-family="Helvetica, Arial, sans-serif" font-size="22" letter-spacing="3" fill="#ffffff" fill-opacity="0.55">PLACEHOLDER — ADD DASHBOARD SHOT</text>
+</svg>

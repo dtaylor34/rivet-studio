@@ -6,13 +6,15 @@ const ProcessSection = ({ title, description, image, children }) => (
     {description && (
       <p className="text-lg text-body mb-8 leading-relaxed max-w-3xl">{description}</p>
     )}
-    <div className="bg-surface rounded-2xl p-8 lg:p-12">
-      {children ?? (
-        <div className="bg-overlay/10 rounded-lg aspect-video flex items-center justify-center">
-          <p className="text-faint text-center">Image: {image}</p>
-        </div>
-      )}
-    </div>
+    {(children || image) && (
+      <div className="bg-surface rounded-2xl p-4 md:p-6">
+        {children ?? (
+          <div className="bg-overlay/10 rounded-lg aspect-video flex items-center justify-center">
+            <p className="text-faint text-center">Image: {image}</p>
+          </div>
+        )}
+      </div>
+    )}
   </div>
 );
 

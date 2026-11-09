@@ -105,7 +105,7 @@ const UNDataPortal = () => {
       <div className="space-y-10">
         <div>
           <div className="rounded-lg overflow-hidden bg-overlay/10">
-            <img
+            <img loading="lazy" decoding="async"
               src={unMapperGraphicAngle}
               alt="UN Data Portal — Powered by Google Data Commons"
               className="w-full h-auto object-contain"
@@ -115,7 +115,7 @@ const UNDataPortal = () => {
         </div>
         <div>
           <div className="rounded-lg overflow-hidden bg-overlay/10">
-            <img
+            <img loading="lazy" decoding="async"
               src={unMapperGraphic45}
               alt="UN Data Portal mapper interface"
               className="w-full h-auto object-contain"
@@ -157,7 +157,7 @@ const UNDataPortal = () => {
                 className="block w-full text-left focus:outline-none focus:ring-2 focus:ring-accent focus:ring-inset rounded-lg"
                 aria-label="Play UN AI Ambassador video"
               >
-                <img
+                <img loading="lazy" decoding="async"
                   src={unAgentComputer}
                   alt="UN AI Ambassador — computer interface. Select to play video."
                   className="w-full h-auto object-contain cursor-pointer"
@@ -169,7 +169,7 @@ const UNDataPortal = () => {
         </div>
         <div>
           <div className="rounded-lg overflow-hidden bg-overlay/10">
-            <img
+            <img loading="lazy" decoding="async"
               src={unAgentFlow}
               alt="UN AI Ambassador — flow"
               className="w-full h-auto object-contain"
@@ -190,7 +190,7 @@ const UNDataPortal = () => {
     <div className="mb-16">
       <div className="bg-surface rounded-2xl p-8 lg:p-12">
         <div className="rounded-lg overflow-hidden bg-overlay/10">
-          <img
+          <img loading="lazy" decoding="async"
             src={unDataFlow}
             alt="UN Data flow — User, UNData, and UN organizations"
             className="w-full h-auto object-contain"

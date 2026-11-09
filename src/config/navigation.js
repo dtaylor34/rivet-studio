@@ -4,15 +4,15 @@
 
 export const navigationItems = [
   {
-    id: 'ai-examples',
-    label: 'AI Examples',
-    path: '/ai-examples',
-    order: 1
-  },
-  {
     id: 'client-examples',
     label: 'Design Showcase',
     path: '/client-examples',
+    order: 1
+  },
+  {
+    id: 'ai-examples',
+    label: 'Clients',
+    path: '/ai-examples',
     order: 2
   },
   {

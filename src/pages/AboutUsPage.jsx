@@ -99,7 +99,8 @@ const AboutUsPage = () => {
           <h2 className="text-3xl lg:text-4xl font-light text-heading mb-6">Let's Build Something Amazing</h2>
           <p className="text-muted text-lg mb-8 max-w-2xl mx-auto">
             Whether you're looking to design a new product from scratch, improve an existing
-            experience, or explore how AI can enhance your user experience, we're here to help.
+            experience, or explore how AI can enhance your user experience, we're{' '}
+            <span className="whitespace-nowrap">here to help.</span>
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/contact" onClick={() => trackCTAClick('Start a Conversation', 'about_page')} className="px-8 py-3 bg-cta text-cta-text rounded-full text-sm font-light tracking-wide hover:bg-cta-hover transition-colors duration-300 inline-block">

@@ -34,7 +34,7 @@ const BrandArchitecture = () => (
       description="Developed product visualization frameworks and design libraries to align teams on brand expression and reusable components."
     >
       <div className="rounded-lg overflow-hidden bg-overlay/10">
-        <img
+        <img loading="lazy" decoding="async"
           src={brandArchitectureLogos}
           alt="Brand Architecture Overview"
           className="w-full h-auto object-contain"

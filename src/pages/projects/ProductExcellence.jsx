@@ -34,7 +34,7 @@ const ProductExcellence = () => (
       description="Facilitated and led workshops with participants from product management, user experience, and engineering teams. Successfully aligned key stakeholders on the product mission and themes, guiding the strategic planning process for 2023."
     >
       <div className="rounded-lg overflow-hidden bg-overlay/10">
-        <img
+        <img loading="lazy" decoding="async"
           src={productExcellenceMultipleDevices}
           alt="Workshop Process Diagram"
           className="w-full h-auto object-contain"
@@ -44,7 +44,7 @@ const ProductExcellence = () => (
     <div className="mb-16">
       <div className="bg-surface rounded-2xl p-8 lg:p-12">
         <div className="rounded-lg overflow-hidden bg-overlay/10">
-          <img
+          <img loading="lazy" decoding="async"
             src={productExcellenceCUJs}
             alt="Product Excellence — Critical user journeys"
             className="w-full h-auto object-contain"

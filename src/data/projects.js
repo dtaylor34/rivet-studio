@@ -7,8 +7,30 @@ import serverCentralDashboard from '../assets/Server-Central-Dashboard.jpg';
 import productExcellenceMultipleDevices from '../assets/Product-Excellence-Multiple-Devices.jpg';
 import brandArchitectureLogos from '../assets/Brand-Architecture-Logos.jpg';
 import hatsSurveysLanding from '../assets/HaTS-Surveys-Landing.jpg';
+import naturaCard from '../assets/natura-hero.webp';
+import rivettradeHero from '../assets/rivettrade-hero.webp';
 
 export const projects = [
+  {
+    id: 7,
+    slug: "natura-kingdom",
+    title: "Natura Kingdom",
+    subtitle: "A cross-platform 3D adventure game where mechanical automation meets organic life",
+    tags: ["Game Design", "3D / Unity", "AI-Assisted Dev"],
+    image: naturaCard,
+    featured: true,
+    order: 1,
+  },
+  {
+    id: 8,
+    slug: "rivettrade",
+    title: "RivetTrade",
+    subtitle: "Turning live market data into clear covered-call and options decisions",
+    tags: ["Product Design", "React / Firebase", "Fintech"],
+    image: rivettradeHero,
+    featured: true,
+    order: 2,
+  },
   {
     id: 1,
     slug: "un-data-portal",
@@ -17,7 +39,7 @@ export const projects = [
     tags: ["UX Design", "Product Strategy", "AI/ML"],
     image: unMapperGraphic,
     featured: true,
-    order: 1,
+    order: 3,
   },
   {
     id: 2,
@@ -27,7 +49,7 @@ export const projects = [
     tags: ["UX Design", "Product Strategy", "Developer Tools"],
     image: serverCentralDashboard,
     featured: true,
-    order: 2,
+    order: 4,
   },
   {
     id: 3,
@@ -37,7 +59,7 @@ export const projects = [
     tags: ["UX Design", "Product Integration", "Developer Experience"],
     image: experimentsPortal01,
     featured: true,
-    order: 3,
+    order: 5,
   },
   {
     id: 4,
@@ -47,7 +69,7 @@ export const projects = [
     tags: ["UX Strategy", "Product Design", "Workshop Facilitation"],
     image: productExcellenceMultipleDevices,
     featured: true,
-    order: 4,
+    order: 6,
   },
   {
     id: 5,
@@ -57,7 +79,7 @@ export const projects = [
     tags: ["UX Design", "Product Design", "Multi-platform"],
     image: hatsSurveysLanding,
     featured: true,
-    order: 5,
+    order: 7,
   },
   {
     id: 6,
@@ -67,7 +89,7 @@ export const projects = [
     tags: ["UX Design", "Brand Strategy", "Design Systems"],
     image: brandArchitectureLogos,
     featured: true,
-    order: 6,
+    order: 8,
   },
 ];
 
