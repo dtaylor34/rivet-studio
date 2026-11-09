@@ -1,12 +1,15 @@
 import React from 'react';
+import { sha256 } from '../../utils/sha256';
 
 // Lightweight client-side access gate.
-// Wrap any content with <PasswordGate password={...} storageKey="...">...</PasswordGate>.
+// Wrap any content with <PasswordGate passwordHash={...} storageKey="...">...</PasswordGate>.
+// The expected password is passed as a SHA-256 hash, so the plaintext never
+// lives in the code/bundle; we hash what the visitor types and compare hashes.
 // Until the visitor enters a name + the correct password, a full-screen blank
 // page is shown covering the rest of the site. Once unlocked, the session is
 // remembered via sessionStorage so navigating away and back within the same
 // browser session won't re-prompt.
-const PasswordGate = ({ username, password, storageKey = 'gate-unlocked', title = 'Protected Section', children }) => {
+const PasswordGate = ({ username, passwordHash, storageKey = 'gate-unlocked', title = 'Protected Section', children }) => {
   const [unlocked, setUnlocked] = React.useState(() => {
     try {
       return sessionStorage.getItem(storageKey) === 'true';
@@ -28,7 +31,7 @@ const PasswordGate = ({ username, password, storageKey = 'gate-unlocked', title 
       setError('Incorrect username or password. Please try again.');
       return;
     }
-    if (value !== password) {
+    if (sha256(value) !== passwordHash) {
       setError('Incorrect username or password. Please try again.');
       return;
     }
