@@ -5,18 +5,10 @@ import { trackCTAClick } from '../utils/analytics';
 const AboutUsPage = () => {
   return (
     <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
-      <nav className="flex items-center gap-2 text-sm mb-8" aria-label="Breadcrumb">
-        <Link to="/" className="text-faint hover:text-body transition-colors">Home</Link>
-        <span className="text-ghost">/</span>
-        <span className="text-muted">About Us</span>
-      </nav>
 
       {/* Hero */}
       <div className="mb-20">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-heading mb-8 tracking-tight">About Rivet Studio</h1>
-        <p className="text-2xl text-body max-w-4xl leading-relaxed font-light">
-          A user-first innovation house focused on leveraging AI to generate the best user product experiences.
-        </p>
       </div>
 
       {/* Philosophy / What We Do */}
@@ -36,21 +28,20 @@ const AboutUsPage = () => {
             <p className="text-muted leading-relaxed">
               We partner with organizations to design and build products that people love to use. Our approach
               combines strategic thinking, user research, AI-powered insights, and cutting-edge design to create
-              experiences that are not just functional, but delightful and intuitive.
+              experiences that are not just function, but intuitive and engaging.
             </p>
           </div>
         </div>
         <div className="space-y-8">
           <div>
             <h2 className="text-2xl font-light text-heading mb-4">Our Approach</h2>
-            <p className="text-muted leading-relaxed mb-4">We leverage artificial intelligence and machine learning throughout our process:</p>
             <ul className="space-y-3 text-muted">
-              <li className="flex items-start"><span className="text-heading mr-3">•</span><span>Code implementation powered by AI</span></li>
               <li className="flex items-start"><span className="text-heading mr-3">•</span><span>Creative vision guided by human expertise</span></li>
+              <li className="flex items-start"><span className="text-heading mr-3">•</span><span>Intelligent personalization and adaptive interfaces</span></li>
+              <li className="flex items-start"><span className="text-heading mr-3">•</span><span>Predictive UX modeling and testing</span></li>
               <li className="flex items-start"><span className="text-heading mr-3">•</span><span>AI-powered user research and behavior analysis</span></li>
               <li className="flex items-start"><span className="text-heading mr-3">•</span><span>Data-driven design decisions and optimization</span></li>
-              <li className="flex items-start"><span className="text-heading mr-3">•</span><span>Predictive UX modeling and testing</span></li>
-              <li className="flex items-start"><span className="text-heading mr-3">•</span><span>Intelligent personalization and adaptive interfaces</span></li>
+              <li className="flex items-start"><span className="text-heading mr-3">•</span><span>Code implementation powered by AI</span></li>
             </ul>
           </div>
         </div>
@@ -62,7 +53,7 @@ const AboutUsPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             { title: 'UX Strategy', desc: 'Strategic planning and user research to define product direction and ensure alignment with business goals and user needs.' },
-            { title: 'Product Design', desc: 'End-to-end product design from concept to implementation, with a focus on creating intuitive, accessible, and delightful experiences.' },
+            { title: 'Product Design', desc: 'End-to-end product design from concept to implementation, with a focus on creating intuitive, accessible and engaging experiences.' },
             { title: 'AI Integration', desc: 'Thoughtful integration of AI and machine learning to enhance user experiences, while maintaining human-centered design principles.' },
             { title: 'Prototyping', desc: 'Rapid prototyping and interactive demos to validate concepts and gather feedback before full-scale development.' },
             { title: 'Developer Tools', desc: 'Designing tools and platforms that empower developers to work efficiently and effectively.' },

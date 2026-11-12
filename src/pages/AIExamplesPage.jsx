@@ -63,13 +63,8 @@ const AIExamplesPage = () => {
   };
 
   return (
-    <PasswordGate username={CLIENTS_USERNAME} passwordHash={CLIENTS_PASSWORD_SHA256} storageKey="clients-unlocked" title="Clients">
+    <PasswordGate username={CLIENTS_USERNAME} passwordHash={CLIENTS_PASSWORD_SHA256} storageKey="clients-unlocked" title="Login">
     <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
-      <nav className="flex items-center gap-2 text-sm mb-8" aria-label="Breadcrumb">
-        <a href="/" className="text-faint hover:text-body transition-colors">Home</a>
-        <span className="text-ghost">/</span>
-        <span className="text-muted">Clients</span>
-      </nav>
 
       <div className="mb-16">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-heading mb-6 tracking-tight">AI-Powered Prototypes</h1>

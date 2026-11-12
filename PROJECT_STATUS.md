@@ -1,11 +1,22 @@
 # Project Status — rivet-studio-v5
 
-_Last updated: 2026-11-09_
+_Last updated: 2026-11-10_
 
 ## TL;DR / where we left off
-All code work is **done and pushed to GitHub** (`main` @ `5fa0b6f`). The **only** remaining
-task is **deploying the built site to the live server**, which is blocked on getting the
-**correct FTP credentials from Network Solutions**. The build is ready to go.
+**DEPLOYED ✅** — the latest build is live on `rivet-studio.com` (deployed 2026-11-10).
+All code is on GitHub `main`, and the site now serves the new build (RivetTrade case
+study, Natura polish, home spacing, hashed client gate, IIS `web.config`).
+
+**How it's deployed now (see `DEPLOY.md`):** plain FTP to `ftp.rabitlearning.com:21`,
+user `admin34` (creds in gitignored `.env`), uploading `build/` to the **FTP login root `/`**
+(the add-on domain's doc root). One command: `npm run build && python upload_ftp.py`.
+
+### What was resolved on 2026-11-10
+- Got working FTP creds from NetSol **FTP Management** (user `admin34`); old `rabit`/`dfunk`
+  logins were dead after a NetSol FTP update.
+- Fixed `upload_ftp.py` path-doubling bug (was causing `550` on every file).
+- Found the real doc root is the FTP **login root `/`**, not `/httpdocs/rivet-studio`
+  (the panel's "root folder" mapping). Set `FTP_REMOTE_PATH=` (empty) to deploy to root.
 
 ---
 

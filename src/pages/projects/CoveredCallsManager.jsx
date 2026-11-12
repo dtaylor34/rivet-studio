@@ -204,7 +204,7 @@ const CoveredCallsManager = () => (
 
     {/* At a glance */}
     <div className="rounded-2xl p-8 lg:p-12 mb-16 bg-overlay/[0.03]">
-      <h2 className="text-2xl font-semibold mb-6 text-heading">At a glance</h2>
+      <h2 className="text-2xl font-semibold mb-6 text-heading">At a Glance</h2>
       <dl className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-5">
         {atAGlance.map((row) => (
           <div key={row.label} className="flex flex-col">
@@ -226,7 +226,7 @@ const CoveredCallsManager = () => (
         "Trust through transparency — for a tool touching money, prioritized showing where every number comes from and keeping the covered-call math inspectable.",
         "Real integration, not fixtures — wired in the Charles Schwab brokerage API for live positions/quotes/options and Yahoo for quotes, so the app reflects a real portfolio.",
       ]}
-      rightTitle="What I built"
+      rightTitle="What I Built"
       rightItems={[
         "Live Schwab brokerage integration — import real positions and portfolio, pull live quotes and options chains.",
         "Covered-call analysis & selection — screening/\"universe,\" strike/expiration selection, and premium/yield math.",
@@ -237,7 +237,7 @@ const CoveredCallsManager = () => (
 
     {/* How it works — user in control of brokers + tools */}
     <div className="mb-20">
-      <h2 className="text-3xl md:text-4xl font-light text-heading mb-6 tracking-tight">How it works</h2>
+      <h2 className="text-3xl md:text-4xl font-light text-heading mb-6 tracking-tight">How It Works</h2>
       <p className="text-lg text-body mb-10 leading-relaxed max-w-3xl">
         The user stays in control — RivetTrade connects their own brokerage accounts on one side and their own analysis tools (position tracking, backtesting, risk) on the other, in a single workspace.
       </p>
@@ -248,32 +248,32 @@ const CoveredCallsManager = () => (
     </div>
 
     <ProcessSection
-      title="The challenge"
+      title="The Challenge"
       description="Could one view replace the dozen screens a trader juggles to make a single options decision — positions, live quotes, option chains, expirations, strikes, premiums — without ever hiding where a number comes from? RivetTrade is the answer: the whole decision, grounded in real data, legible at a glance."
     >
       <DecisionChips />
     </ProcessSection>
 
     <div className="mb-20">
-      <h2 className="text-3xl md:text-4xl font-light text-heading mb-6 tracking-tight">Design &amp; craft highlights</h2>
+      <h2 className="text-3xl md:text-4xl font-light text-heading mb-6 tracking-tight">Design Highlights</h2>
       <ul className="space-y-4 mb-10 max-w-3xl">
-        <li className="flex gap-3 text-body leading-relaxed"><span>•</span><span><strong>Calm hierarchy for dense data.</strong> Financial numbers are grouped and spaced so a data-heavy screen reads in seconds, not minutes.</span></li>
-        <li className="flex gap-3 text-body leading-relaxed"><span>•</span><span><strong>Trust through clear states.</strong> Live vs. stale data and risk are always marked, so the user trusts exactly what they're seeing.</span></li>
-        <li className="flex gap-3 text-body leading-relaxed"><span>•</span><span><strong>Decision-support, inline.</strong> Hints and side-by-side comparisons do the math for you — they don't just display it.</span></li>
+        <li className="flex gap-3 text-body leading-relaxed"><span>•</span><span><strong>Clear hierarchy for dense data</strong> — Financial numbers are grouped and spaced so a data-heavy screen reads in seconds, not minutes.</span></li>
+        <li className="flex gap-3 text-body leading-relaxed"><span>•</span><span><strong>Trust through clear states</strong> — Live vs. stale data and risk are always marked, so the user trusts exactly what they're seeing.</span></li>
+        <li className="flex gap-3 text-body leading-relaxed"><span>•</span><span><strong>Helpful comparison views</strong> — Hints and side-by-side comparisons do the math for you — they don't just display it.</span></li>
       </ul>
       <div className="space-y-12">
         <ChartBlock
           src={ccContractCost}
           alt="Contract Cost panel — current price, strike, premium, ROI, and a Best Return Hint"
-          title="Every number that defines the trade, in one panel"
+          title="Every Number That Defines the Trade, in One Panel"
           caption="Contract cost"
         >
-          Current price, strike, bid, total premium, ROI, and days-to-expiry sit together in a calm grid — topped by a "Best Return Hint" that proposes a stronger strike and expiration and applies it in one tap. Dense math, made glanceable.
+          Current price, strike, bid, total premium, ROI, and days-to-expiry sit together in a clear grid — topped by a "Best Return Hint" that proposes a stronger strike and expiration and applies it in one tap. Dense math, made glanceable.
         </ChartBlock>
         <ChartBlock
           src={ccBestReturns}
           alt="Best Returns — Best Return, Best No-Sale, and Best Sale compared side by side"
-          title="Three return strategies, compared at a glance"
+          title="Three Return Strategies, Compared at a Glance"
           caption="Best returns"
         >
           Best Return, Best No-Sale, and Best Sale laid side by side — each with strike, expiration, premium, annualized yield, and OTM cushion — so the trade-off between income and assignment risk is obvious without a spreadsheet.
@@ -281,7 +281,7 @@ const CoveredCallsManager = () => (
         <ChartBlock
           src={ccOptionChain}
           alt="Option chain — calls and puts around the strike ladder with expiration tabs"
-          title="A dense options chain that stays readable"
+          title="A Dense Options Chain That Stays Readable"
           caption="Option chain"
         >
           Calls and puts mirrored around the strike ladder, bid/ask color-coded by side, and the at-the-money row anchored for orientation. Expiration tabs keep the whole chain one tap away — data density without the clutter.
@@ -291,7 +291,7 @@ const CoveredCallsManager = () => (
 
     {/* Covered Calls menu — charts broken out */}
     <div className="mb-20">
-      <h2 className="text-3xl md:text-4xl font-light text-heading mb-6 tracking-tight">Covered-call analysis</h2>
+      <h2 className="text-3xl md:text-4xl font-light text-heading mb-6 tracking-tight">Covered-Call Analysis</h2>
       <p className="text-lg text-body mb-10 leading-relaxed max-w-3xl">
         With the <strong>Covered Calls</strong> menu selected, the workspace centers on a single underlying and the calls you can write against it — anchored by a live price chart with covered-call context.
       </p>
@@ -299,7 +299,7 @@ const CoveredCallsManager = () => (
         <ChartBlock
           src={ccAaplPrice}
           alt="Covered Calls — underlying price history chart (AAPL, 6-month)"
-          title="Underlying price history, with strike context"
+          title="Underlying Price History, With Strike Context"
           caption="Price history"
         >
           A six-month price view of the underlying with Price, Strike view, and % Change modes. It's the anchor for judging where to sell calls relative to the current price and the recent trading range, with live Schwab data feeding the quote.
@@ -309,7 +309,7 @@ const CoveredCallsManager = () => (
 
     {/* Options menu — charts broken out */}
     <div className="mb-20">
-      <h2 className="text-3xl md:text-4xl font-light text-heading mb-6 tracking-tight">Options analysis</h2>
+      <h2 className="text-3xl md:text-4xl font-light text-heading mb-6 tracking-tight">Options Analysis</h2>
       <p className="text-lg text-body mb-10 leading-relaxed max-w-3xl">
         Switching to the <strong>Options</strong> menu opens a broader analysis workspace for any symbol — including US Treasuries — layering price trend, signal history, and intraday movement.
       </p>
@@ -317,7 +317,7 @@ const CoveredCallsManager = () => (
         <ChartBlock
           src={opZbfPrice}
           alt="Options — price trend chart (ZB=F, one year)"
-          title="Price trend for any symbol"
+          title="Price Trend for Any Symbol"
           caption="Price trend"
         >
           A full-year price history with Day / Week / Month resolution for any ticker (here the 30-Year T-Bond). It sets the environment — direction, volatility, and recent levels — before building a strategy around it.
@@ -325,7 +325,7 @@ const CoveredCallsManager = () => (
         <ChartBlock
           src={opDataTrend}
           alt="Options — Data Trend signal chart"
-          title="Signal vs. outcome over time"
+          title="Signal vs. Outcome Over Time"
           caption="Signal history"
         >
           Each trading day's price at a chosen minute is marked Buy (below the prior close) or Sell (above it), then plotted against that day's actual close — so you can see, at a glance, how often the signal pointed the favorable way.
@@ -333,7 +333,7 @@ const CoveredCallsManager = () => (
         <ChartBlock
           src={opIntraday}
           alt="Options — intraday movement chart vs. prior close"
-          title="Intraday movement vs. prior close"
+          title="Intraday Movement vs. Prior Close"
           caption="Intraday movement"
         >
           Every minute of the session plotted against the prior close — green above, red below — with the decision minute called out. It reads momentum into and out of a specific minute without losing the full-day shape.
@@ -343,7 +343,7 @@ const CoveredCallsManager = () => (
 
     {/* Full-layout chart page */}
     <div className="mb-20">
-      <h2 className="text-3xl md:text-4xl font-light text-heading mb-6 tracking-tight">All-days intraday — full grid</h2>
+      <h2 className="text-3xl md:text-4xl font-light text-heading mb-6 tracking-tight">All-Days Intraday — Full Grid</h2>
       <p className="text-lg text-body mb-10 leading-relaxed max-w-3xl">
         A full-layout view: a multi-day grid of intraday charts, one card per session, for scanning the day-to-day pattern across many sessions at once.
       </p>
@@ -355,7 +355,7 @@ const CoveredCallsManager = () => (
 
     {/* Design system — built on Google Material */}
     <div className="mb-20">
-      <h2 className="text-3xl md:text-4xl font-light text-heading mb-6 tracking-tight">Design system</h2>
+      <h2 className="text-3xl md:text-4xl font-light text-heading mb-6 tracking-tight">Design System</h2>
       <p className="text-lg text-body mb-10 leading-relaxed max-w-3xl">
         Built on Google's Material foundations — Roboto type, Material icons, and a disciplined trading palette — so dense financial data stays legible, consistent, and quick to scan.
       </p>
@@ -446,7 +446,7 @@ const CoveredCallsManager = () => (
       </div>
     </div>
 
-    <ProcessSection title="Outcome & what's next">
+    <ProcessSection title="Outcome">
       <ul className="space-y-4">
         <li className="flex gap-3 text-body leading-relaxed"><span>•</span><span>Built and shipped end-to-end solo — product, design, a live Charles Schwab brokerage integration, billing, and deploy.</span></li>
         <li className="flex gap-3 text-body leading-relaxed"><span>•</span><span>Interactive web demo live, validating the single-view model against real market and brokerage data.</span></li>

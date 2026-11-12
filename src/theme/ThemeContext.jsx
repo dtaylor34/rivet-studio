@@ -25,7 +25,9 @@ const getInitialTheme = () => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved && themes[saved]) return saved;
   } catch (e) {}
-  return getSystemPreference();
+  // Default new visitors to dark mode (ignore system preference).
+  // An explicit toggle is remembered via localStorage above.
+  return 'dark';
 };
 
 export const ThemeProvider = ({ children }) => {

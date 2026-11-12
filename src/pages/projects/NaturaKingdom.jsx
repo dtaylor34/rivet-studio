@@ -39,7 +39,7 @@ const NaturaKingdom = () => (
     <ProjectHero
       title="Natura Kingdom"
       subtitle="Uncovering the Secrets of the Wild"
-      description="An original, cross-platform 3D adventure game and platform I designed and built end-to-end through Rivet Studio. It pairs a distinct art direction — mechanical automation woven into organic, natural environments — with approachable exploration and puzzle mechanics, and ships as a platform that can host multiple games (such as Panda Pinball) under one world."
+      description="An original, cross-platform 3D classic pinball game and platform I designed and built end-to-end through Rivet Studio. It pairs a distinct art direction — mechanical automation woven into organic, natural environments — with approachable exploration and puzzle mechanics, and ships as a platform that can host multiple games (such as Panda Pinball) under one world."
     />
 
     {/* Hero image */}
@@ -57,7 +57,7 @@ const NaturaKingdom = () => (
 
     {/* At a glance */}
     <div className="rounded-2xl p-8 lg:p-12 mb-16 bg-overlay/[0.03]">
-      <h2 className="text-2xl font-semibold mb-6 text-heading">At a glance</h2>
+      <h2 className="text-2xl font-semibold mb-6 text-heading">At a Glance</h2>
       <dl className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-5">
         {atAGlance.map((row) => (
           <div key={row.label} className="flex flex-col">
@@ -74,25 +74,25 @@ const NaturaKingdom = () => (
           <dd className="text-body leading-relaxed">
             <a href="https://naturakingdom.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">naturakingdom.com</a>
             {' · '}
-            <span className="text-faint italic">Demo Example — Coming Soon</span>
+            <span className="text-faint italic">Demo Example</span>
           </dd>
         </div>
       </dl>
     </div>
 
     <ProcessSection
-      title="The challenge"
-      description="Could a single designer, working with AI-assisted tooling, ship a polished, cross-platform 3D experience end-to-end — not a static concept, but something people can actually play in a browser today that also extends cleanly to tablet, mobile, AR, and VR? Natura Kingdom is the proof."
+      title="The Challenge"
+      description="Could a single designer, working with AI-assisted tooling, ship a polished, cross-platform 3D experience end-to-end? Natura Kingdom is an example of how Rivet Studio moved beyond a static concept, and delivered something people can actually play in a browser today that also seamlessly extends to tablet, mobile, AR, and VR."
     />
 
     <TwoColumnSection
       leftTitle="Approach"
       leftItems={[
-        "Design-led, built in code — owned the full arc (concept, world and art direction, UX, implementation), designing directly in a running Unity build so every interaction was validated in the real engine.",
+        "Design-led, built in code — owned the full arc (concept, art direction, game design, UX, implementation), designing directly in a running Unity build so every interaction was validated in the real engine.",
         "AI-assisted development — used MCP (Model Context Protocol) and CLI tooling to connect systems and automate the build pipeline, and leaned on AI tools to move from idea to working mechanic faster.",
         "Cross-platform from the start — architected around a shared core so the same world targets web, tablet, mobile, AR, and VR instead of being rebuilt per platform.",
       ]}
-      rightTitle="What I built"
+      rightTitle="What I Built"
       rightItems={[
         "A live, playable web-browser demo with real-time 3D movement (WASD / arrow keys) and interactive “forest console” objects.",
         "Original 3D assets and environments modeled in Maya and composed in Unity.",
@@ -101,14 +101,14 @@ const NaturaKingdom = () => (
     />
 
     <ProcessSection
-      title="How I worked"
+      title="How I Worked"
       description="One designer orchestrating many systems — AI agents and production tools wired into a single pipeline, from modeling in Maya to shipping a running build."
     >
       <ToolStackDiagram />
     </ProcessSection>
 
     <div className="mb-20">
-      <h2 className="text-3xl md:text-4xl font-light text-heading mb-6 tracking-tight">Design decisions</h2>
+      <h2 className="text-3xl md:text-4xl font-light text-heading mb-6 tracking-tight">Design Decisions</h2>
       <p className="text-lg text-body mb-8 leading-relaxed max-w-3xl">The choices that shaped how the game feels in the first few minutes — each one visible in the screens below.</p>
       <ul className="space-y-4 mb-8 max-w-3xl">
         <li className="flex gap-3 text-body leading-relaxed"><span>•</span><span><strong>Validated in the real engine.</strong> I designed directly in a running Unity build rather than in static mockups, so every interaction was judged on how it actually felt to play, not how it looked in a frame.</span></li>
@@ -128,7 +128,7 @@ const NaturaKingdom = () => (
     </div>
 
     <ProcessSection
-      title="Panda Pinball — the first game on the platform"
+      title="Panda Pinball — The First Game on the Platform"
       description="Panda Pinball is the first game built inside the Natura Kingdom platform — proof that one shared world can host distinct, self-contained experiences. These screens trace it from landing page and scene transitions through level select, in-level detail, the new-game flow, and bonus rounds."
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
@@ -142,21 +142,21 @@ const NaturaKingdom = () => (
     </ProcessSection>
 
     <ProcessSection
-      title="VR & AR experiences"
+      title="VR & AR Experiences"
       description="I'm extending Natura Kingdom off the screen and into VR and AR, so the world can be explored at room scale. The same shared core that drives the web build targets the headsets, so the art direction and mechanics carry over instead of being rebuilt per platform."
     >
       <Figure src={natura3dLeft} alt="Natura Kingdom — 3D environment" caption="Dimension view" />
     </ProcessSection>
 
     <ProcessSection
-      title="Character creation"
+      title="Character Creation"
       description="Each character reimagines a real-world animal through a futuristic lens — organic form fused with mechanical detail. The wood-and-brass material language ties every creature back to the world's 'automation meets nature' identity and keeps the tone warm and approachable rather than cold or sci-fi. Drag to rotate, press play to spin, or step through frame by frame."
     >
       <Turntable360 />
     </ProcessSection>
 
     <ProcessSection
-      title="Character modeling"
+      title="Character Modeling"
       description="Each animal is modeled in Maya, built deliberately toward the vision for the game and how the character will ultimately be represented in-world — from wireframe topology through to the final shaded render."
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
@@ -169,8 +169,7 @@ const NaturaKingdom = () => (
     </ProcessSection>
 
     <ProcessSection
-      title="Outcome & what's next"
-      description="Where the project stands today, and where it's headed."
+      title="Outcome"
     >
       <ul className="space-y-4">
         <li className="flex gap-3 text-body leading-relaxed"><span>•</span><span>Shipped a live, playable demo at naturakingdom.com — real-time 3D running in the browser.</span></li>

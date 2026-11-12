@@ -55,6 +55,28 @@ const Header = () => {
   const projectTitleMap = {};
   projects.forEach((p) => { projectTitleMap[p.slug] = p.title; });
 
+  // Header-level breadcrumb trail, consistent across all pages.
+  // Labels come from the nav config so they stay in sync with the menu.
+  const navLabelByPath = {};
+  navItems.forEach((n) => { navLabelByPath[n.path] = n.label; });
+  navLabelByPath['/contact'] = 'Contact';
+
+  let breadcrumbCrumbs = null;
+  if (currentPath !== '/') {
+    if (isProjectPage) {
+      breadcrumbCrumbs = [
+        { label: 'Home', to: '/' },
+        { label: 'Design Showcase', to: '/client-examples' },
+        { label: projectTitleMap[projectSlug] || 'Project' },
+      ];
+    } else if (navLabelByPath[currentPath]) {
+      breadcrumbCrumbs = [
+        { label: 'Home', to: '/' },
+        { label: navLabelByPath[currentPath] },
+      ];
+    }
+  }
+
   return (
     <header
       className={`bg-base border-b border-main sticky top-0 z-50 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
@@ -121,12 +143,19 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Breadcrumb for project pages */}
-        {isProjectPage && (
+        {/* Breadcrumb — header-level, consistent across all pages */}
+        {breadcrumbCrumbs && (
           <nav className="flex items-center gap-2 text-sm mt-3 lg:mt-4" aria-label="Breadcrumb">
-            <Link to="/" className="text-faint hover:text-body transition-colors">Home</Link>
-            <span className="text-ghost">/</span>
-            <span className="text-muted">{projectTitleMap[projectSlug] || 'Project'}</span>
+            {breadcrumbCrumbs.map((crumb, i) => (
+              <React.Fragment key={crumb.to || crumb.label}>
+                {i > 0 && <span className="text-ghost">/</span>}
+                {crumb.to ? (
+                  <Link to={crumb.to} className="text-faint hover:text-body transition-colors">{crumb.label}</Link>
+                ) : (
+                  <span className="text-muted">{crumb.label}</span>
+                )}
+              </React.Fragment>
+            ))}
           </nav>
         )}
       </div>

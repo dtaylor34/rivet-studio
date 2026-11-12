@@ -91,3 +91,15 @@ svg * {
   background: rgb(var(--color-bg-base));
   color: rgb(var(--color-text-heading));
 }
+
+/* Carousel: active card/details slide in laterally when the slide changes */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(56px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-56px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.animate-in-right { animation: slideInRight 0.4s ease-out both; }
+.animate-in-left  { animation: slideInLeft 0.4s ease-out both; }

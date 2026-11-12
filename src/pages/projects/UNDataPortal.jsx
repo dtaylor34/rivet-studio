@@ -79,8 +79,7 @@ const UNDataPortal = () => {
   <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
     <ProjectHero
       title="United Nations Data Portal"
-      subtitle="Powered by Google Data Commons"
-      description="UN Data Portal, powered by Google Data Commons, consolidates certified agency data into a single entry point. It enables users to quickly research, save, download and manage their data for policy research and other initiatives."
+      description="UN Data Portal, in partnership with Google Data Commons, consolidates certified agency data into a single entry point. It enables users to quickly research, save, download and manage their data for policy research and other initiatives."
     />
     <TwoColumnSection
       leftTitle="Contributions"
@@ -99,7 +98,7 @@ const UNDataPortal = () => {
       ]}
     />
     <ProcessSection
-      title="UN Data Portal — Powered by Google Data Commons"
+      title="UN Data Portal — In Partnership With Google Data Commons"
       description="Developed and spearheaded the UX integration of QuiX into XP. Leveraged existing back-end features and implemented Google Material front-end design solutions."
     >
       <div className="space-y-10">
@@ -107,7 +106,7 @@ const UNDataPortal = () => {
           <div className="rounded-lg overflow-hidden bg-overlay/10">
             <img loading="lazy" decoding="async"
               src={unMapperGraphicAngle}
-              alt="UN Data Portal — Powered by Google Data Commons"
+              alt="UN Data Portal — In Partnership With Google Data Commons"
               className="w-full h-auto object-contain"
             />
           </div>
@@ -180,7 +179,7 @@ const UNDataPortal = () => {
       </div>
     </ProcessSection>
     <ProcessSection
-      title="UN Data - Listening to the user"
+      title="UN Data - Listening to the User"
       description="By interviewing multiple users we created a product that works well for the beginner to advanced user."
     >
       <div className="isolate">

@@ -7,9 +7,9 @@ import brandArchitectureLogos from '../../assets/Brand-Architecture-Logos.jpg';
 const BrandArchitecture = () => (
   <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
     <ProjectHero
-      title="Brand Architecture"
+      title="Google Brand Architecture"
       subtitle="Product visualization and design systems"
-      description="Brand Architecture encompasses product visualization and design libraries that create a consistent, scalable visual language across products. This work establishes clear brand principles, component systems, and documentation to support product teams in delivering cohesive user experiences."
+      description="Google Brand Architecture encompasses product visualization and design libraries that create a consistent, scalable visual language across products. This work establishes clear brand principles, component systems, and documentation to support product teams in delivering cohesive user experiences."
     />
     <TwoColumnSection
       leftTitle="Focus Areas:"
@@ -30,13 +30,13 @@ const BrandArchitecture = () => (
       ]}
     />
     <ProcessSection
-      title="Brand Architecture Overview"
+      title="Google Brand Architecture Overview"
       description="Developed product visualization frameworks and design libraries to align teams on brand expression and reusable components."
     >
       <div className="rounded-lg overflow-hidden bg-overlay/10">
         <img loading="lazy" decoding="async"
           src={brandArchitectureLogos}
-          alt="Brand Architecture Overview"
+          alt="Google Brand Architecture Overview"
           className="w-full h-auto object-contain"
         />
       </div>

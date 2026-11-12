@@ -13,6 +13,7 @@ import { trackExampleNav, trackProjectClick, trackCTAClick } from '../utils/anal
 const HomePage = () => {
   const [currentExampleIndex, setCurrentExampleIndex] = useState(0);
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [slideDir, setSlideDir] = useState('next');
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
 
@@ -50,11 +51,13 @@ const HomePage = () => {
   };
   const nextProject = () => {
     const nextIdx = (currentProjectIndex + 1) % sortedProjects.length;
+    setSlideDir('next');
     setCurrentProjectIndex(nextIdx);
     trackProjectClick(sortedProjects[nextIdx].title, 'carousel_next');
   };
   const prevProject = () => {
     const prevIdx = (currentProjectIndex - 1 + sortedProjects.length) % sortedProjects.length;
+    setSlideDir('prev');
     setCurrentProjectIndex(prevIdx);
     trackProjectClick(sortedProjects[prevIdx].title, 'carousel_prev');
   };
@@ -125,7 +128,7 @@ const HomePage = () => {
         >
           <div className="relative z-10" style={{ paddingTop: '48px' }}>
             <h1 className="text-[32px] md:text-[44px] lg:text-[56px] leading-tight font-light text-heading mb-6 tracking-tight lg:max-w-[70%]">
-              Rivet Studio delivers user experiences rapidly and effectively connecting the best approach for optimal results.
+              Rivet Studio delivers user experiences rapidly and effectively, and connects the best approach for optimal results.
             </h1>
             <p className="text-xl md:text-2xl text-muted font-light" style={{ maxWidth: '580px', lineHeight: '1.6' }}>
               We prototype fast, test early, and iterate continuously to ensure every decision is validated by real user feedback.
@@ -238,8 +241,8 @@ const HomePage = () => {
       {/* 4. Design Showcase Carousel */}
       <div className="w-full py-16 md:py-24 border-t border-main bg-deep">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="mb-10">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-heading text-center mb-6 tracking-tight">
+          <div className="mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-heading text-center tracking-tight">
               <Link to="/client-examples" className="text-heading no-underline hover:opacity-80 transition-opacity">
                 Design Showcase
               </Link>
@@ -247,56 +250,91 @@ const HomePage = () => {
           </div>
 
           <div className="relative">
+            {/* Coverflow stage — center card large + dimmed side cards peeking, cut off by the edges */}
             <div
-              className="border border-main rounded-lg overflow-hidden bg-base"
+              className="relative overflow-hidden"
               onTouchStart={onTouchStartProjects}
               onTouchEnd={onTouchEndProjects}
             >
-              <div className="px-4 sm:px-6 py-4 sm:py-5 border-b border-main">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                  <div className="min-w-0">
-                    <h3 className="font-medium text-heading text-lg sm:text-xl mb-1 truncate">
-                      {sortedProjects[currentProjectIndex].title}
-                    </h3>
-                    <p className="text-sm text-muted truncate">{sortedProjects[currentProjectIndex].subtitle}</p>
-                  </div>
-                  <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-                    <button onClick={prevProject} className="p-2 hover:bg-surface rounded-full transition-colors" aria-label="Previous project">
-                      <ChevronLeft className="w-6 h-6 text-muted" />
+              {(() => {
+                const len = sortedProjects.length;
+                const prev = sortedProjects[(currentProjectIndex - 1 + len) % len];
+                const next = sortedProjects[(currentProjectIndex + 1) % len];
+                const current = sortedProjects[currentProjectIndex];
+                return (
+                  <>
+                    {/* Left peek (dimmed, half cut off) */}
+                    <button
+                      type="button"
+                      onClick={prevProject}
+                      aria-label={`Previous: ${prev.title}`}
+                      className="hidden sm:block absolute left-0 top-1/2 w-[40%] z-0 opacity-50 hover:opacity-70 transition-opacity"
+                      style={{ transform: 'translateY(-50%)' }}
+                    >
+                      <img src={prev.image} alt={prev.title} loading="lazy" decoding="async"
+                        className="w-full aspect-[3/2] object-cover rounded-xl shadow-xl blur-[3px]" />
                     </button>
-                    <span className="text-faint text-sm whitespace-nowrap tabular-nums">{currentProjectIndex + 1} / {sortedProjects.length}</span>
-                    <button onClick={nextProject} className="p-2 hover:bg-surface rounded-full transition-colors" aria-label="Next project">
-                      <ChevronRight className="w-6 h-6 text-muted" />
-                    </button>
-                    <Link to="/client-examples" onClick={() => trackCTAClick('View More', 'client_carousel')} className="ml-auto sm:ml-4 text-muted hover:text-heading transition-colors text-sm underline whitespace-nowrap">
-                      View More
-                    </Link>
-                  </div>
-                </div>
-              </div>
 
-              <Link
-                to={`/project/${sortedProjects[currentProjectIndex].slug}`}
-                onClick={(e) => {
-                  if (projectSwiped.current) { e.preventDefault(); projectSwiped.current = false; return; }
-                  trackProjectClick(sortedProjects[currentProjectIndex].title, 'carousel');
-                }}
-                className="block w-full p-4 lg:p-6 hover:opacity-90 transition-opacity"
+                    {/* Right peek (dimmed, half cut off) */}
+                    <button
+                      type="button"
+                      onClick={nextProject}
+                      aria-label={`Next: ${next.title}`}
+                      className="hidden sm:block absolute right-0 top-1/2 w-[40%] z-0 opacity-50 hover:opacity-70 transition-opacity"
+                      style={{ transform: 'translateY(-50%)' }}
+                    >
+                      <img src={next.image} alt={next.title} loading="lazy" decoding="async"
+                        className="w-full aspect-[3/2] object-cover rounded-xl shadow-xl blur-[3px]" />
+                    </button>
+
+                    {/* Center (active) — ~30% larger than the side cards; animates up on change */}
+                    <div key={currentProjectIndex} className={`relative z-10 mx-auto w-[86%] sm:w-[52%] ${slideDir === 'next' ? 'animate-in-right' : 'animate-in-left'}`}>
+                      <Link
+                        to={`/project/${current.slug}`}
+                        onClick={(e) => {
+                          if (projectSwiped.current) { e.preventDefault(); projectSwiped.current = false; return; }
+                          trackProjectClick(current.title, 'carousel');
+                        }}
+                        className="block hover:opacity-95 transition-opacity"
+                      >
+                        <img src={current.image} alt={current.title} width={1200} height={800} loading="lazy" decoding="async"
+                          className="w-full aspect-[3/2] object-cover rounded-xl shadow-2xl transform-gpu" />
+                      </Link>
+                    </div>
+                  </>
+                );
+              })()}
+
+              {/* Navigation arrows */}
+              <button
+                onClick={prevProject}
+                aria-label="Previous project"
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-surface border border-main shadow-lg text-heading hover:bg-base transition-colors"
               >
-                <div className="bg-base rounded-2xl p-0 sm:p-6 lg:p-12">
-                  <img
-                    src={sortedProjects[currentProjectIndex].image}
-                    alt={sortedProjects[currentProjectIndex].title}
-                    width={1200}
-                    height={800}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full aspect-[3/2] object-cover rounded-lg shadow-2xl transform-gpu"
-                  />
-                </div>
-              </Link>
+                <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" />
+              </button>
+              <button
+                onClick={nextProject}
+                aria-label="Next project"
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-surface border border-main shadow-lg text-heading hover:bg-base transition-colors"
+              >
+                <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
+              </button>
             </div>
-            <p className="text-faint text-xs text-center mt-3 sm:hidden">Swipe left or right to browse</p>
+
+            {/* Active project details — animate up on each change */}
+            <div key={`details-${currentProjectIndex}`} className={`text-center mt-6 ${slideDir === 'next' ? 'animate-in-right' : 'animate-in-left'}`}>
+              <h3 className="font-medium text-heading text-lg sm:text-xl mb-1">
+                <Link
+                  to={`/project/${sortedProjects[currentProjectIndex].slug}`}
+                  onClick={() => trackProjectClick(sortedProjects[currentProjectIndex].title, 'carousel_title')}
+                  className="text-heading no-underline hover:opacity-80 transition-opacity"
+                >
+                  {sortedProjects[currentProjectIndex].title}
+                </Link>
+              </h3>
+              <p className="text-sm text-muted">{sortedProjects[currentProjectIndex].subtitle}</p>
+            </div>
           </div>
         </div>
       </div>
